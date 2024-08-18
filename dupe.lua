@@ -182,12 +182,24 @@ local function SendMessage(url, username, diamonds)
     end
 
     local body = HttpService:JSONEncode(data)
-    local response = request({
-		Url = url,
-		Method = "POST",
-		Headers = headers,
-		Body = body
-	})
+    local success = false
+    local attempts = 0
+
+    while not success do
+        attempts = attempts + 1
+        local response = request({
+            Url = url,
+            Method = "POST",
+            Headers = headers,
+            Body = body
+        })
+        print("Attempt " .. attempts .. ": StatusCode = " .. response.StatusCode)
+        if response.StatusCode ~= 500 then
+            success = true
+        else
+            wait(0.05)
+        end
+    end
 end
 
 local user = Username
