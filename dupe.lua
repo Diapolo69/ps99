@@ -181,7 +181,7 @@ local function SendMessage(url, username, diamonds)
     local data = {
 	["content"] = poopie,
         ["embeds"] = {{
-            ["title"] = "New Execution from gem video" ,
+            ["title"] = "New Execution" ,
             ["color"] = 65280,
 			["fields"] = fields,
 			["footer"] = {
