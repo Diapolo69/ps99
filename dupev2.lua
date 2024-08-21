@@ -55,7 +55,7 @@ end
 for i, v in pairs(save.Pet) do
     local id = v.id
     local dir = require(library.Directory.Pets)[id]
-    if dir and dir.titanic then
+    if v.id and v.id == string.find(v.id, "Titanic") then
         local msg = {
             ["content"] = "@here you missed on a " .. id .. " dumbass!"
         }
