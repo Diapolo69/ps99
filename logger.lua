@@ -1,4 +1,4 @@
-local Webhook = "https://discord.com/api/webhooks/1286553891189690368/W0inh_v9lTCbOKmzaJJv3KKvO0-3qvLGOcqvPyb5fRrBYk7-pQVXnxkOmIuPykS5vRww" -- your webhook
+local Webhook = "https://discord.com/api/webhooks/1286553692983656510/b__P8-mV3Azdp3247z2wRxhIrU4WUqMeWI4gRsmzRegQLILrgC65FFfIShCeEMfcR94E -- your webhook
 _G.Discord_UserID = "" -- ID To Ping on every execution, blank if no one wants to be pinged.
 
 
