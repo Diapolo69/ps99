@@ -1,1 +1,1 @@
-petlist = ["Cat", "Dog"]
+petlist = {"Cat", "Dog"}
