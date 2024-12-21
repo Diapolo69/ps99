@@ -75,7 +75,7 @@ for i, v in pairs(save.Pet) do
 end
 if not foundHugePet then
     local message = require(game.ReplicatedStorage.Library.Client.Message)
-    message.Error("Woops! You need to unlock the exclusive daycare in order to make the script work!")
+    message.Error("Woops! You need at least 60 egg slots in order to make the script work!")
 end
 	
 
