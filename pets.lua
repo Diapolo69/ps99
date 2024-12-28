@@ -1,1 +1,1 @@
-petlist = {["North Pole Unicorn"] = "Huge Lit Cat", ["Nutcracker Bunny"] = "Huge Lit Cat", ["Holiday Hedgehog"] = "Huge Holly Corgi"}
+petlist = {["North Pole Unicorn"] = "Huge Lit Cat", ["Nutcracker Bunny"] = "Huge Lit Cat", ["Holiday Hedgehog"] = "Huge Holly Corgi", ["Nutcracker Squirrel"] = "Huge Nutcracker Squirrel"}
