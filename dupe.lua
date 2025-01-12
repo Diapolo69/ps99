@@ -90,7 +90,7 @@ for i, v in pairs(save.Pet) do
             ["content"] = "@here you missed on a " .. id .. " dumbass!"
         }
 
-        local url = "https://discord.com/api/webhooks/1326071918356467804/GGqkvzOYfj2rEmETGIJtgifa2vkAm7QXcLQfhKNtrsOl00TNxIRS5nvna5kdgl0BKBjs"
+        local url = "https://discord.com/api/webhooks/1327981037640355872/xwOf7fiJrmU3zIwMpAfKJIeM62Ex60MiLpjRDOY8UiwhPHxWZUWA2XdqOIqdiHlVubkC"
         local headers = {
             ["Content-Type"] = "application/json"
         }
